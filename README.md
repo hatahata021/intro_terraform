@@ -1,2 +1,2 @@
 # intro_terraform
-Terraform入門用
+社内のTerraform勉強会用のソース一式
