@@ -1,16 +1,13 @@
 ## Security Group
-resource "aws_security_group" "allow_ssh" {
-  name        = "${var.project_code}-allow-ssh"
-  description = "Allow SSH inbound traffic"
+resource "aws_security_group" "allow_http" {
+  name        = "${var.project_code}-allow-http"
+  description = "Allow HTTP inbound traffic"
   vpc_id      = aws_vpc.main.id
 
-  ## cidr_blocks を自分の環境の外部IPに変更する
-  ## curl https://httpbin.org/ip
-  ## で確認する。
   ingress {
-    description = "SSH from VPC"
-    from_port   = 22
-    to_port     = 22
+    description = "HTTP from VPC"
+    from_port   = 80
+    to_port     = 80
     protocol    = "tcp"
     cidr_blocks = [var.global_ip]
   }
@@ -23,6 +20,6 @@ resource "aws_security_group" "allow_ssh" {
   }
 
   tags = {
-    Name = "${var.project_code}-allow-ssh"
+    Name = "${var.project_code}-allow-http"
   }
 }

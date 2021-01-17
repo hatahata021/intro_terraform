@@ -80,18 +80,18 @@ resource "aws_route_table_association" "public_c" {
 }
 
 ## Security Group
-resource "aws_security_group" "allow_ssh" {
-  name        = "simple-ec2-allow-ssh"
-  description = "Allow SSH inbound traffic"
+resource "aws_security_group" "allow_http" {
+  name        = "simple-ec2-allow-http"
+  description = "Allow HTTP inbound traffic"
   vpc_id      = aws_vpc.main.id
 
   ## cidr_blocks を自分の環境の外部IPに変更する
   ## curl https://httpbin.org/ip
   ## で確認する。
   ingress {
-    description = "SSH from VPC"
-    from_port   = 22
-    to_port     = 22
+    description = "HTTP from My IP"
+    from_port   = 80
+    to_port     = 80
     protocol    = "tcp"
     cidr_blocks = [aws_vpc.main.cidr_block]
   }
@@ -104,7 +104,7 @@ resource "aws_security_group" "allow_ssh" {
   }
 
   tags = {
-    Name = "simple-ec2-allow-ssh"
+    Name = "simple-ec2-allow-http"
   }
 }
 
@@ -127,8 +127,9 @@ resource "aws_instance" "main" {
   associate_public_ip_address = true
   instance_type               = "t2.micro"
   key_name                    = "my_keypair"
-  vpc_security_group_ids      = [aws_security_group.allow_ssh.id]
+  vpc_security_group_ids      = [aws_security_group.allow_http.id]
   subnet_id                   = aws_subnet.public_a.id
+  user_data                   = file("userdata.sh")
 
   tags = {
     Name = "simple-ec2"
