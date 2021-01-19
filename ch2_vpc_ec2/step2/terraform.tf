@@ -38,12 +38,12 @@ variable "subnet" {
 
   default = {
     public_a = {
-        az = "ap-northeast-1a"
-        cidr = "10.0.1.0/24"
+      az   = "ap-northeast-1a"
+      cidr = "10.0.1.0/24"
     }
     public_c = {
-        az = "ap-northeast-1c"
-        cidr = "10.0.2.0/24"
+      az   = "ap-northeast-1c"
+      cidr = "10.0.2.0/24"
     }
   }
 }
@@ -165,7 +165,7 @@ resource "aws_security_group" "allow_http" {
 ## Latest Amazon Linux 2 AMI
 data "aws_ami" "amazon_linux_2" {
   most_recent = true
-  owners = ["amazon"]
+  owners      = ["amazon"]
 
   filter {
     name   = "name"
@@ -178,10 +178,10 @@ resource "aws_instance" "main" {
   ami                         = data.aws_ami.amazon_linux_2.id
   associate_public_ip_address = true
   instance_type               = "t2.micro"
-  key_name                    = "my_keypair"
+  key_name                    = var.keypair
   vpc_security_group_ids      = [aws_security_group.allow_http.id]
   subnet_id                   = aws_subnet.public_a.id
-  user_data = file("userdata.sh")
+  user_data                   = file("userdata.sh")
 
   tags = {
     Name = var.project_code
