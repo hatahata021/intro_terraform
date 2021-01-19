@@ -24,7 +24,3 @@ resource "aws_instance" "main" {
     Name = var.project_code
   }
 }
-
-output "ec2_public_ip" {
-  value = aws_instance.main.public_ip
-}
