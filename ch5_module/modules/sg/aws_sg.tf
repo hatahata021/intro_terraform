@@ -1,10 +1,3 @@
-## Security Group
-variable "sg_name" {}
-variable "sg_discription" {}
-variable "vpc_id" {}
-variable "global_ip" {}
-variable "project_code" {}
-
 resource "aws_security_group" "allow_http" {
   name        =  var.sg_name
   description = var.sg_discription
@@ -28,9 +21,4 @@ resource "aws_security_group" "allow_http" {
   tags = {
     Name = "${var.project_code}-allow-http"
   }
-}
-
-# 別のリソースから参照したい属性はoutputしておく
-output "security_group_id" {
-  value = aws_security_group.allow_http.id  
 }

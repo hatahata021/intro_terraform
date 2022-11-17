@@ -1,7 +1,3 @@
-variable "vpc_cidr" {}
-variable "project_code" {}
-variable "subnet" {}
-
 ## VPC settings
 resource "aws_vpc" "main" {
   cidr_block       = var.vpc_cidr
@@ -69,15 +65,3 @@ resource "aws_route_table_association" "public_c" {
   route_table_id = aws_route_table.public.id
 }
 
-# 別のリソースから参照したい属性はoutputしておく
-output "vpc_id" {
-    value = aws_vpc.main.id
-}
-
-output "subnet_a_id" {
-  value = aws_subnet.public_a.id
-}
-
-output "subnet_c_id" {
-  value = aws_subnet.public_c.id
-}

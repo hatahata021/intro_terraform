@@ -1,8 +1,3 @@
-variable "keypair" {}
-variable "project_code" {}
-variable "security_group_id" {}
-variable "subnet_a_id" {}
-
 ### EC2 Instance
 ## Latest Amazon Linux 2 AMI
 data "aws_ami" "amazon_linux_2" {
@@ -28,9 +23,4 @@ resource "aws_instance" "main" {
   tags = {
     Name = var.project_code
   }
-}
-
-# 別のリソースから参照したい属性はoutputしておく
-output "public_ip" {
-  value = aws_instance.main.public_ip
 }

@@ -68,3 +68,7 @@ moduleに参照しに行く
 
 ## 注意事項
 output属性はmoduleを定義しているtfファイルの中に書く必要がありそう
+
+# 参考URL
+- Standard Module Structure
+  - https://developer.hashicorp.com/terraform/language/modules/develop/structure

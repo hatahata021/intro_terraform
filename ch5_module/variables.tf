@@ -39,7 +39,7 @@ variable "keypair" {
 }
 
 ## 接続元IP
-## 作業環境の外部IPを tfvars ファイルで指定する
+## defaultを記載しない場合には、plan,apply時に毎回入力する
 variable "global_ip" {
   description = "My grobal IP (CIDR expression)"
   type        = string
