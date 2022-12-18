@@ -27,3 +27,9 @@
 1. Terraform 管理外のリソースを Terraform に組み込む
     - Terraform 標準の機能と、OSS の Terraformer について学ぶ
         - ~/ch6_import
+
+# メモ
+- .tfvarsファイルの参照方法
+    - -var-file オプションを付けてtfvarsファイルを指定する
+        - terraform plan -var-file ****.tfvars
+        - terraform apply -var-file ****.tfvars
