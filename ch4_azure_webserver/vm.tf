@@ -5,8 +5,12 @@ resource "azurerm_linux_virtual_machine" "web_server" {
   size = "Standard_A1_v2"
 
   disable_password_authentication = false
-  admin_username = "adminuser"
-  admin_password = "P@55w0rd"
+  admin_username = var.admin_username
+  admin_password = var.admin_password
+
+  lifecycle {
+    ignore_changes = [admin_password]
+  }
 
   # ユーザーデータをBase64にエンコード
   user_data = base64encode(file("userdata.sh"))

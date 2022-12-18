@@ -2,6 +2,9 @@ variable "employee_number" {
   type = string
 }
 
+variable "admin_username" {}
+variable "admin_password" {}
+
 variable "main_locaiton" {
   type    = string
   default = "japaneast"
