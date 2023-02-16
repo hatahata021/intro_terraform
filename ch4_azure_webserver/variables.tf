@@ -1,4 +1,4 @@
-variable "employee_number" {
+variable "resource_name" {
   type = string
 }
 

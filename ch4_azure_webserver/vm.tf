@@ -1,5 +1,5 @@
 resource "azurerm_linux_virtual_machine" "web_server" {
-  name = "${var.employee_number}-web-server"
+  name = "${var.resource_name}-web-server"
   resource_group_name = azurerm_resource_group.main.name
   location = var.main_locaiton
   size = "Standard_A1_v2"
@@ -33,12 +33,12 @@ resource "azurerm_linux_virtual_machine" "web_server" {
 }
 
 resource "azurerm_network_interface" "web_server" {
-  name = "${var.employee_number}_web_server_nic"
+  name = "${var.resource_name}_web_server_nic"
   resource_group_name = azurerm_resource_group.main.name
   location = var.main_locaiton
 
   ip_configuration {
-    name = "${var.employee_number}_web_server_ip"
+    name = "${var.resource_name}_web_server_ip"
     subnet_id = azurerm_subnet.public_main.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id = azurerm_public_ip.web_server_ip.id
@@ -46,12 +46,12 @@ resource "azurerm_network_interface" "web_server" {
 }
 
 resource "azurerm_public_ip" "web_server_ip" {
-  name = "${var.employee_number}_web_server_pip"
+  name = "${var.resource_name}_web_server_pip"
   resource_group_name = azurerm_resource_group.main.name
   location = var.main_locaiton
   allocation_method = "Static"
 
   tags = {
-    Name = var.employee_number
+    Name = var.resource_name
   }
 }

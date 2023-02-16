@@ -1,5 +1,5 @@
 resource "azurerm_network_security_group" "http_inbound" {
-  name = "${var.employee_number}_sg"
+  name = "${var.resource_name}_sg"
   location = var.main_locaiton
   resource_group_name = azurerm_resource_group.main.name
 
@@ -20,7 +20,7 @@ resource "azurerm_network_security_group" "http_inbound" {
   }
 
   tags = {
-    Name = var.employee_number
+    Name = var.resource_name
   }
 }
 
