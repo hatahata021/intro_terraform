@@ -10,7 +10,9 @@ resource "azurerm_network_security_group" "http_inbound" {
     source_port_range = "*"
     # destination_port_range = 22
     destination_port_range = 80
-    source_address_prefix = local.client_ip
+    source_address_prefix = var.client_ip
+    # httpプロバイダー使用時はlocal変数を使用する
+    # source_address_prefix = local.client_ip
     destination_address_prefix = "*"
     access = "Allow"
     priority = 100

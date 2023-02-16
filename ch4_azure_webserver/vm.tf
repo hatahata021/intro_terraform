@@ -13,6 +13,7 @@ resource "azurerm_linux_virtual_machine" "web_server" {
   }
 
   # ユーザーデータをBase64にエンコード
+  # user_data属性はBase64の書式しか受け付けない仕様
   user_data = base64encode(file("userdata.sh"))
 
   network_interface_ids = [azurerm_network_interface.web_server.id]
