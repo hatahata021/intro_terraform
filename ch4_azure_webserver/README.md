@@ -17,6 +17,8 @@
         ```
         admin_username = "example"
         admin_password = "example"
+        resource_name = "example"
+        client_ip = "xx.xx.xx.xx/32"
         ```
 - http プロバイダーのWarningメッセージ
     - terraformのバージョンが1.3.7だと以下のエラーが発生する
