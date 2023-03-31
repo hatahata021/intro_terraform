@@ -15,7 +15,7 @@ provider "aws" {
 # S3 Bucket の作成
 resource "aws_s3_bucket" "my_website" {
   ## バケット名はAWSのグローバルで一意になるように設定する
-  bucket = "s3-website-test-c4r8pckxd"
+  bucket = "s3-website-test-hatakeyama-20230325"
 }
 
 # 静的Webサイトホスティング

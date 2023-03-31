@@ -86,7 +86,7 @@ resource "aws_security_group" "allow_http" {
   vpc_id      = aws_vpc.main.id
 
   ## cidr_blocks を自分の環境の外部IPに変更する
-  ## curl https://httpbin.org/ip
+  ## curl http://checkip.amazonaws.com
   ## で確認する。
   ingress {
     description = "HTTP from My IP"
